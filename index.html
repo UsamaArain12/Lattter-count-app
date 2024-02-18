@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Counter App</title>
+    <style>
+        body{
+            background-color: #fcf6a2;
+            text-align: center;
+        }
+
+        input{
+            margin: 100px auto 100px;
+            width: 350px;
+            height: 40px;
+            display: block;
+            text-align: center;
+        }
+
+        #output,#output_without_space,#output_vowels{
+          margin-top: 54px;
+          width: 150px;
+          background: lightgreen;
+          margin: 100px auto 100px;
+        }
+
+        #btn{
+            width: 350px;
+            height: 80px;
+            color: #fff;
+            background-color: rgba(0,0,255,.877);
+            border-style: none;
+            border-radius: 15px;
+            margin-top: 100px;
+        }
+
+        h1{
+            color: #000;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Type a word or sentence in the box</h1>
+    <input type="text" id="str">
+    <div id="output"></div>
+    <div id="output_without_space"></div>
+    <div id="output_vowels"></div>
+    <button id="btn"><h2>Click to Calculate the length of word/sentence</h2></button>
+
+    <script>
+
+let button = document.getElementById('btn');
+
+button.addEventListener('click',function(){
+    let word = document.getElementById('str').value;
+    let count = word.length;
+
+let vewelCount = word.split('').filter(x => ['a','e','i','o','u'].includes(x)).length;
+
+let countWithSpace = word.split('').filter(x => (x != " ")).length;
+  
+    let outputDiv = document.getElementById('output');
+    let outputDivWithoutSpace = document.getElementById('output_without_space');
+    let outputDivVowels = document.getElementById('output_vowels');
+    outputDivWithoutSpace.innerHTML = `<h1>Count Without space: ${countWithSpace}</h1>`
+    outputDivVowels.innerHTML = `<h1>Vowel Count: ${vewelCount}</h1>`
+    outputDiv.innerHTML = `<h1>Total count: ${count}</h1>`;
+})
+
+    </script>
+</body>
+</html>
